@@ -8,7 +8,11 @@ public class Board {
 	private int col;
 	private Cell[][] matrix;
 
-	Board(int row, int col) {
+	public Board() {
+		new Board(8, 8);
+	}
+	
+	public Board(int row, int col) {
 		this.row = row;
 		this.col = col;
 

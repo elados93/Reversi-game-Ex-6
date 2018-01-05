@@ -1,46 +1,34 @@
 package Reversi;
 
+import ReversiCode.Board;
+import ReversiCode.ConsolePrinter;
+import ReversiCode.GameManager;
+import ReversiCode.GameState;
+import ReversiCode.HumanPlayer;
+import ReversiCode.ReversiDefaultRules;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
 public class FXMLDemoController {
-	@FXML
-	private Label Reversi_Title;
-	@FXML
 	private Button Start_Game;
-	@FXML
-	private Button Settings;
-	@FXML
-	private Button Exit;
 
 	@FXML
-	protected void menuDetails() {
-		Start_Game.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				Start_Game.setText("Clicked!! OMGGGG");
-
-			}
-		});
-
-		Settings.setOnAction(new EventHandler<ActionEvent>() {
-
-			@Override
-			public void handle(ActionEvent event) {
-				Settings.setText("Don't change anything!!!");
-			}
-
-		});
-
-		Exit.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				Exit.setFont(new Font("Arial", 50));
-			}
-		});
+	protected void startGame() {
+			
+		Board board = new Board(4, 4);
+		HumanPlayer player1 = new HumanPlayer('x');
+		HumanPlayer player2 = new HumanPlayer('o');
+		GameState gameState = new GameState(board);
+		ReversiDefaultRules rules = new ReversiDefaultRules();
+		ConsolePrinter printer = new ConsolePrinter(board, player1, player2);
+		GameManager gameManager = new GameManager(gameState, player1, player2, printer, rules, false);
+		
+		gameManager.run();
 
 	}
 }
