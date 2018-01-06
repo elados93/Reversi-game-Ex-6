@@ -6,12 +6,27 @@ import ReversiCode.GameManager;
 import ReversiCode.GameState;
 import ReversiCode.HumanPlayer;
 import ReversiCode.ReversiDefaultRules;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 public class FXMLDemoController {
+	
+	/*private Stage stage;
+	
+	public FXMLDemoController(Stage stage) {
+		this.stage = stage;
+	}*/
+
+
+
 	@FXML
 	protected void startGame() {
 			
+		// Write constructor that will connect the game!
+		
 		Board board = new Board(4, 4);
 		HumanPlayer player1 = new HumanPlayer('x');
 		HumanPlayer player2 = new HumanPlayer('o');
@@ -23,4 +38,12 @@ public class FXMLDemoController {
 		gameManager.run();
 
 	}
+	
+	/*@FXML
+	protected void exitGame() {
+		stage.close();
+	}*/
+		
+	
+	
 }
