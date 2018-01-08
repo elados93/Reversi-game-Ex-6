@@ -11,16 +11,14 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			GridPane root = (GridPane)FXMLLoader.load(getClass().getResource("FXMLDemo.fxml"));			
+			GridPane root = (GridPane)FXMLLoader.load(getClass().getResource("MainMenuFXML.fxml"));			
 			
 			Scene scene = new Scene(root, 400, 350);
 
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setTitle("FXML Welcome");
+			primaryStage.setTitle("Reversi");
 			primaryStage.setScene(scene);
 			
-			//FXMLDemoController c = new FXMLDemoController(primaryStage);
-
 			primaryStage.show();
 			
 		} catch (Exception ex) {
