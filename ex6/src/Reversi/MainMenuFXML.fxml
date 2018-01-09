@@ -32,7 +32,7 @@
 						<Insets />
 					</opaqueInsets>
 				</Button>
-				<Button fx:id="Settings" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Settings" textAlignment="CENTER">
+				<Button fx:id="Settings" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#settings" text="Settings" textAlignment="CENTER">
 					<VBox.margin>
 						<Insets left="120.0" />
 					</VBox.margin>

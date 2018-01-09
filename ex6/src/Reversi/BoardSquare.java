@@ -1,40 +1,54 @@
 package Reversi;
 
-
-import com.sun.javafx.geom.Rectangle;
-
+import GeneralDef.Owner;
 import ReversiCode.Cell;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 
-public class BoardSquare extends GridPane {
+public class BoardSquare extends Circle {
 
 	private GridPane grid;
 	private int row;
 	private int col;
 	private Cell cell;
-	private ImageView image;
 
-	public BoardSquare(GridPane gridPane, Cell cell, int row, int col, String color) {
+	public BoardSquare(GridPane gridPane, Cell cell, int row, int col) {
+		super();
 		this.grid = gridPane;
 		this.cell = cell;
 		this.row = row;
 		this.col = col;
-		if (color.compareTo("Black") == 0)
-			this.image = new ImageView(getClass().getResource("BlackCircle.jpg").toExternalForm());
-		if (color.compareTo("White") == 0)
-			this.image = new ImageView(getClass().getResource("WhiteCircle.jpg").toExternalForm());
-		if (color.compareTo("Gray") == 0)
-			this.image = new ImageView(getClass().getResource("GrayCircle.jpg").toExternalForm());
-
 	}
 
-	public void draw(int cellWidth, int cellHeight) {
-		grid.add(image, col, row);
-		image.setFitWidth(cellWidth);
-		image.setFitHeight(cellHeight);
-		grid.getChildren().remove(image);
-		grid.add(image, col, row);
+	public void draw(double cellWidth, double cellHeight) {
+						
+		Rectangle rec = new Rectangle(cellWidth, cellHeight);
+		rec.setStroke(Color.BLACK);
+		rec.setFill(Color.GRAY);
+		grid.add(rec, col, row);
+
+		if (cell.getSymbol() == Owner.PLAYER_1) {
+			this.setRadius((cellHeight + cellWidth) / 4.0);
+			this.setFill(Color.BLACK);
+			grid.add(this, col, row);
+		}
+
+		if (cell.getSymbol() == Owner.PLAYER_2) {
+			this.setRadius((cellHeight + cellWidth) / 4.0);
+			this.setFill(Color.WHITE);
+			grid.add(this, col, row);
+		}
+		
+		rec.setOnMouseClicked(e-> {
+	        System.out.println(row + " ," + col);
+		});
+		
+		this.setOnMouseClicked(e-> {
+	        System.out.println(row + " ," + col);
+		});
+
 	}
 
 }
