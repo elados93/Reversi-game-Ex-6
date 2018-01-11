@@ -43,7 +43,6 @@ public class ParseSettingsFile {
 
 				if (i == 2) 
 					this.Player1Color = line;
-				
 
 				if (i == 3) 
 					this.Player2Color = line;

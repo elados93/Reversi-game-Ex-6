@@ -6,11 +6,13 @@ public class Cell {
 	private Owner symbol;
 	private String color;
 	private boolean isActive;
+	private boolean isPossibleOption;
 
 	public Cell() {
 		this.symbol = Owner.NONE;
 		this.isActive = false;
 		this.color = null;
+		this.isPossibleOption = false;
 	}
 	
 	public Cell(Cell cell) {
@@ -38,6 +40,17 @@ public class Cell {
 		this.symbol = symbol;
 		this.color = color;
 	}
+
+	public boolean isPossibleOption() {
+		return isPossibleOption;
+	}
+
+	public void setPossibleOption(boolean isPossibleOption) {
+		this.isPossibleOption = isPossibleOption;
+	}
+	
+	
+	
 
 	
 

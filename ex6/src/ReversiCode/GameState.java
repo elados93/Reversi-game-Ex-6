@@ -66,4 +66,15 @@ public class GameState {
 	}
 
 	
+	public Vector<Point> getVec1() {
+		return vec1;
+	}
+	
+
+	public Vector<Point> getVec2() {
+		return vec2;
+	}
+
+	
+	
 }

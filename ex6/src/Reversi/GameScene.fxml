@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 
-<HBox fx:id="root" prefHeight="306.0" prefWidth="298.0"
-	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<HBox fx:id="root" prefHeight="306.0" prefWidth="298.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 	<children>
 		<VBox>
 			<children>
@@ -15,5 +15,15 @@
 				<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2 score:" />
 			</children>
 		</VBox>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Text fx:id="currentPlayerField" strokeType="OUTSIDE" strokeWidth="0.0" text="currentPlayer" />
+            <Text fx:id="player1Score" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1 score" />
+            <Text fx:id="player2Score" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2 score" />
+         </children>
+         <padding>
+            <Insets left="5.0" />
+         </padding>
+      </VBox>
 	</children>
 </HBox>

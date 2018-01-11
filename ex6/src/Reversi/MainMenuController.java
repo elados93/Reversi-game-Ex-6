@@ -1,6 +1,5 @@
 package Reversi;
 
-
 import java.io.IOException;
 
 import GeneralDef.Owner;
@@ -29,43 +28,42 @@ public class MainMenuController {
 
 	@FXML
 	protected void startGame() {
-		try {		
+		try {
 			ParseSettingsFile parser = new ParseSettingsFile();
-			
+
 			parser.parseSettingsFile();
 			int row = parser.getRowBox();
 			int col = parser.getColBox();
 			String player1Color = parser.getPlayer1Color();
 			String player2Color = parser.getPlayer2Color();
-						
-			ClickListener clickListener = new ClickListener();
+
 			Board board = new Board(row, col);
-			GuiPlayer p1 = new GuiPlayer(player1Color, Owner.PLAYER_1, clickListener);
-			GuiPlayer p2 = new GuiPlayer(player2Color, Owner.PLAYER_2, clickListener);
-			GameState gameState = new GameState(board);
-			ReversiDefaultRules rules = new ReversiDefaultRules();
+
 			Stage stage = (Stage) Start_Game.getScene().getWindow();
 
+			GameState gameState = new GameState(board);
+			GuiPlayer p1 = new GuiPlayer(player1Color, Owner.PLAYER_1);
+			GuiPlayer p2 = new GuiPlayer(player2Color, Owner.PLAYER_2);
+			ReversiDefaultRules rules = new ReversiDefaultRules();
 
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Reversi/GameScene.fxml"));
-			ReversiBoardController reversiBoardController = new ReversiBoardController(board, clickListener);
-
+			ReversiBoardController reversiBoardController = new ReversiBoardController(board, p1, p2, rules, p1,
+					gameState);
+			
 			loader.setController(reversiBoardController);
-			
+
 			HBox root = (HBox) loader.load();
-			
-			
-			Scene reversiGameScene = new Scene(root, 640, 500);
-			GuiManager guiManager = new GuiManager(gameState, p1, p2, rules, 1);
-			
+
+			Scene reversiGameScene = new Scene(root, 750, 550);
+
 			stage.setScene(reversiGameScene);
-			stage.show();				
-			
+			stage.show();
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@FXML
 	protected void settings() {
 		try {
@@ -75,10 +73,10 @@ public class MainMenuController {
 			VBox root = (VBox) loader.load();
 			loader.setController(new SettingsController());
 			Scene settingsScene = new Scene(root, 640, 500);
-						
+
 			stage.setScene(settingsScene);
 			stage.show();
-		
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -89,5 +87,5 @@ public class MainMenuController {
 		Stage stage = (Stage) Exit.getScene().getWindow();
 		stage.close();
 	}
-	
+
 }

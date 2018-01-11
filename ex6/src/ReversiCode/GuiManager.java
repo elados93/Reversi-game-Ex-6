@@ -5,12 +5,16 @@ import java.util.Vector;
 import GeneralDef.Owner;
 import GeneralDef.Possible_OutCome;
 import GeneralDef.Status;
+import Reversi.ReversiBoard;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class GuiManager extends GameManager {
-
+	
 	public GuiManager(GameState gameState, Player player1, Player player2, GameRules gameRules, int currentPlayer) {
 		super(gameState, player1, player2, null, gameRules, false);
 		this.currentPlayer = currentPlayer == 1 ? player1 : player2;
+		
 	}
 
 	@Override

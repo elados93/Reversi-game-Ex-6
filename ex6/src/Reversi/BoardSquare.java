@@ -7,50 +7,42 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
-public class BoardSquare extends Circle {
+public class BoardSquare extends Rectangle {
 
 	private GridPane grid;
 	private int row;
 	private int col;
 	private Cell cell;
-	private ClickListener clickListener;
 
-	public BoardSquare(GridPane gridPane, Cell cell, int row, int col, ClickListener clickListener) {
+	public BoardSquare(GridPane gridPane, Cell cell, int row, int col) {
 		super();
 		this.grid = gridPane;
 		this.cell = cell;
 		this.row = row;
 		this.col = col;
-		this.clickListener = clickListener;
 	}
 
 	public void draw(double cellWidth, double cellHeight) {
 
-		Rectangle rec = new Rectangle(cellWidth, cellHeight);
-		rec.setStroke(Color.BLACK);
-		rec.setFill(Color.SADDLEBROWN); // default brown square color
-		grid.add(rec, col, row);
+		this.setWidth(cellWidth);
+		this.setHeight(cellHeight);
+		this.setStroke(Color.BLACK);
+		this.setFill(Color.SADDLEBROWN); // default brown square color
+		grid.add(this, col, row);
 
-		if (cell.getSymbol() == Owner.PLAYER_1) {
-			this.setRadius((cellHeight + cellWidth) / 4.0);
-			this.setFill(Color.web(cell.getColor()));
-			grid.add(this, col, row);
+		if (cell.getSymbol() != Owner.NONE) {
+			Circle circle = new Circle();
+			circle.setRadius((cellHeight + cellWidth) / 4.0);
+			circle.setFill(Color.web(cell.getColor()));
+			grid.add(circle, col, row);
 		}
-
-		if (cell.getSymbol() == Owner.PLAYER_2) {
-			this.setRadius((cellHeight + cellWidth) / 4.0);
-			this.setFill(Color.web(cell.getColor()));
-			grid.add(this, col, row);
+		
+		if (cell.isPossibleOption()) {
+			cell.setPossibleOption(false);
+			Circle circle = new Circle();
+			circle.setStroke(Color.PINK);
+			grid.add(circle, col, row);
 		}
-
-		rec.setOnMouseClicked(e -> {
-			clickListener.clickEvent(this);
-		});
-
-		this.setOnMouseClicked(e -> {
-			clickListener.clickEvent(this);
-		});
-
 	}
 
 	public int getRow() {

@@ -176,7 +176,7 @@ public class ReversiDefaultRules implements GameRules {
 	        } else {
 	            Vector <Point> currentPlayerVector = getPossibleMoves(gameState, currentSymbol);
 	            // Although the points is in the vector, it might have another direction to move along.
-	            Point pointToAddFlow = new Point(getPointFromVec(p, currentPlayerVector));
+	            Point pointToAddFlow = getPointFromVec(p, currentPlayerVector);
 	            pointToAddFlow.insertFlowPoint(flowPoint);
 	        }
 	    }
