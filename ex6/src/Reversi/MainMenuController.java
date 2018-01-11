@@ -30,12 +30,13 @@ public class MainMenuController {
 	@FXML
 	protected void startGame() {
 		try {		
-			SettingsController settingsController = new SettingsController();
-			settingsController.parseSettingsFile();
-			int row = settingsController.getRowBox();
-			int col = settingsController.getColBox();
-			String player1Color = settingsController.getPlayer1Color();
-			String player2Color = settingsController.getPlayer2Color();
+			ParseSettingsFile parser = new ParseSettingsFile();
+			
+			parser.parseSettingsFile();
+			int row = parser.getRowBox();
+			int col = parser.getColBox();
+			String player1Color = parser.getPlayer1Color();
+			String player2Color = parser.getPlayer2Color();
 						
 			ClickListener clickListener = new ClickListener();
 			Board board = new Board(row, col);
@@ -43,25 +44,22 @@ public class MainMenuController {
 			GuiPlayer p2 = new GuiPlayer(player2Color, Owner.PLAYER_2, clickListener);
 			GameState gameState = new GameState(board);
 			ReversiDefaultRules rules = new ReversiDefaultRules();
-			GuiManager guiManager = new GuiManager(gameState, p1, p2, rules, 1);
+			Stage stage = (Stage) Start_Game.getScene().getWindow();
 
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Reversi/GameScene.fxml"));
 			ReversiBoardController reversiBoardController = new ReversiBoardController(board, clickListener);
 
-			Stage stage = (Stage) Start_Game.getScene().getWindow();
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Reversi/GameScene.fxml"));
-			
 			loader.setController(reversiBoardController);
 			
 			HBox root = (HBox) loader.load();
 			
 			
 			Scene reversiGameScene = new Scene(root, 640, 500);
-						
+			GuiManager guiManager = new GuiManager(gameState, p1, p2, rules, 1);
+			
 			stage.setScene(reversiGameScene);
-			stage.show();
-			
-			guiManager.run();
-			
+			stage.show();				
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -72,7 +70,10 @@ public class MainMenuController {
 	protected void settings() {
 		try {
 			Stage stage = (Stage) Settings.getScene().getWindow();
-			VBox root = (VBox) FXMLLoader.load(getClass().getResource("/Reversi/Settings.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Reversi/Settings.fxml"));
+
+			VBox root = (VBox) loader.load();
+			loader.setController(new SettingsController());
 			Scene settingsScene = new Scene(root, 640, 500);
 						
 			stage.setScene(settingsScene);
@@ -83,15 +84,10 @@ public class MainMenuController {
 		}
 	}
 
-
 	@FXML
 	protected void exitGame() {
 		Stage stage = (Stage) Exit.getScene().getWindow();
 		stage.close();
 	}
 	
-	
-	private void handleGame(ClickListener clickListener) {
-		
-	}
 }

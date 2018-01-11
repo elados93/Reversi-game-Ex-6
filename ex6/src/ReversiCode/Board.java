@@ -1,6 +1,7 @@
 package ReversiCode;
 
 import GeneralDef.Owner;
+import Reversi.ParseSettingsFile;
 import Reversi.SettingsController;
 
 public class Board {
@@ -31,10 +32,10 @@ public class Board {
 			for (int j = 0; j < col; j++)
 				matrix[i][j].setSymbol(Owner.NONE, null);
 
-		SettingsController settingsController = new SettingsController();
-		settingsController.parseSettingsFile();
-		String player1Color = settingsController.getPlayer1Color();
-		String player2Color = settingsController.getPlayer2Color();
+		ParseSettingsFile parser = new ParseSettingsFile();
+		parser.parseSettingsFile();
+		String player1Color = parser.getPlayer1Color();
+		String player2Color = parser.getPlayer2Color();
 		
 		// Set the center of the board with the 2 players.
 		matrix[(row / 2) - 1][(col / 2) - 1].setSymbol(Owner.PLAYER_2, player2Color);

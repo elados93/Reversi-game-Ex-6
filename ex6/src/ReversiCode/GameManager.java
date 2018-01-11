@@ -32,7 +32,6 @@ public class GameManager {
 		this.currentPlayer = player1;
 		this.lastMove = null;
 		this.firstRun = true;
-		this.isAIPlayer = isAIPlayer;
 	}
 
 	public Owner getWinner() {

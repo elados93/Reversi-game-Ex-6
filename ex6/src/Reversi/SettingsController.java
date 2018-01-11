@@ -1,13 +1,5 @@
 package Reversi;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -23,8 +15,6 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class SettingsController implements Initializable {
-
-	private static final int LINES = 4;
 
 	@FXML
 	private ColorPicker Player1Color;
@@ -44,7 +34,9 @@ public class SettingsController implements Initializable {
 	@FXML
 	protected void mainMenu() {
 		try {
-			writeSettings();
+			ParseSettingsFile parser = new ParseSettingsFile();
+			parser.writeSettings(rowBox.getValue(), colBox.getValue(), Player1Color.getValue().toString(),
+					Player2Color.getValue().toString());
 
 			Stage primaryStage = (Stage) mainMenuButton.getScene().getWindow();
 
@@ -65,7 +57,6 @@ public class SettingsController implements Initializable {
 	}
 
 	@Override
-
 	public void initialize(URL location, ResourceBundle resources) {
 
 		for (int j = 4; j < 21; j++) {
@@ -74,99 +65,16 @@ public class SettingsController implements Initializable {
 		}
 
 		parseSettingsFile();
-
 	}
 
-	public void writeSettings() {
+	private void parseSettingsFile() {
+		ParseSettingsFile parser = new ParseSettingsFile();
+		parser.parseSettingsFile();
+		rowBox.setValue(parser.getRowBox());
+		colBox.setValue(parser.getColBox());
+		Player1Color.setValue(Color.web(parser.getPlayer1Color()));
+		Player2Color.setValue(Color.web(parser.getPlayer2Color()));
 
-		try {
-			File file = new File("settings.txt");
-
-			if (!file.exists())
-				file.createNewFile();
-
-			FileWriter fileWriter = new FileWriter(file);
-			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-
-			bufferedWriter.write(rowBox.getValue().toString());
-			bufferedWriter.newLine();
-			bufferedWriter.write(colBox.getValue().toString());
-			bufferedWriter.newLine();
-
-			bufferedWriter.write(Player1Color.getValue().toString());
-			bufferedWriter.newLine();
-
-			bufferedWriter.write(Player2Color.getValue().toString());
-
-			bufferedWriter.close();
-		} catch (Exception e) {
-			System.out.println("Can't write settings to file!");
-		}
-	}
-
-	public void parseSettingsFile() {
-		try {
-			File file = new File("settings.txt");
-			if (!file.exists()) {
-				writeDefaultValues();
-				return;
-			}
-
-			FileReader fileReader = new FileReader(file);
-			BufferedReader bufferedReader = new BufferedReader(fileReader);
-			String line;
-			for (int i = 0; i < LINES; i++) {
-				line = bufferedReader.readLine();
-				if (i == 0)
-					this.rowBox.setValue(Integer.parseInt(line));
-
-				if (i == 1)
-					this.colBox.setValue(Integer.parseInt(line));
-
-				if (i == 2) {
-					Color c = Color.web(line);
-					this.Player1Color.setValue(c);
-				}
-
-				if (i == 3) {
-					Color c = Color.web(line);
-					this.Player2Color.setValue(c);
-				}
-			}
-
-			fileReader.close();
-		} catch (Exception e) {
-			System.out.println("Can't parse settings from file, using the default settings");
-
-			// using the default values
-			writeDefaultValues();
-		}
-	}
-
-	private void writeDefaultValues() {
-		this.rowBox.setValue(8);
-		this.colBox.setValue(8);
-		this.Player1Color.setValue(Color.PINK);
-		this.Player2Color.setValue(Color.CYAN);
-	}
-
-	public String getPlayer1Color() {
-		return Player1Color.getValue().toString();
-	}
-	
-
-	public String getPlayer2Color() {
-		return Player2Color.getValue().toString();
-	}
-	
-
-	public int getRowBox() {
-		return rowBox.getValue();
-	}
-	
-
-	public int getColBox() {
-		return colBox.getValue();
 	}
 
 }

@@ -4,6 +4,7 @@ import java.util.Vector;
 
 import GeneralDef.Owner;
 import GeneralDef.Possible_OutCome;
+import Reversi.ParseSettingsFile;
 import Reversi.SettingsController;
 
 public class ReversiDefaultRules implements GameRules {
@@ -12,10 +13,10 @@ public class ReversiDefaultRules implements GameRules {
 	private String p2Color;
 	
 	public ReversiDefaultRules(){
-		SettingsController settingsController = new SettingsController();
-		settingsController.parseSettingsFile();
-		this.p1Color = settingsController.getPlayer1Color();
-		this.p2Color = settingsController.getPlayer2Color();
+		ParseSettingsFile parser = new ParseSettingsFile();
+		parser.parseSettingsFile();
+		this.p1Color = parser.getPlayer1Color();
+		this.p2Color = parser.getPlayer2Color();
 	};
 	
 	@Override

@@ -1,6 +1,5 @@
 package ReversiCode;
 
-import java.util.Scanner;
 import java.util.Vector;
 
 import GeneralDef.Owner;
