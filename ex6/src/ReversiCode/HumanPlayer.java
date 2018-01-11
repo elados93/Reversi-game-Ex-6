@@ -1,4 +1,4 @@
-package ReversiCode;
+/*package ReversiCode;
 
 import java.util.Scanner;
 
@@ -34,3 +34,4 @@ public class HumanPlayer implements Player {
 	}
 
 }
+*/

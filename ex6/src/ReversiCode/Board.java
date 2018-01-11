@@ -1,6 +1,7 @@
 package ReversiCode;
 
 import GeneralDef.Owner;
+import Reversi.SettingsController;
 
 public class Board {
 
@@ -28,13 +29,18 @@ public class Board {
 		// Initialize all the board with no owners.
 		for (int i = 0; i < row; i++)
 			for (int j = 0; j < col; j++)
-				matrix[i][j].setSymbol(Owner.NONE);
+				matrix[i][j].setSymbol(Owner.NONE, null);
 
+		SettingsController settingsController = new SettingsController();
+		settingsController.parseSettingsFile();
+		String player1Color = settingsController.getPlayer1Color();
+		String player2Color = settingsController.getPlayer2Color();
+		
 		// Set the center of the board with the 2 players.
-		matrix[(row / 2) - 1][(col / 2) - 1].setSymbol(Owner.PLAYER_2);
-		matrix[(row / 2) - 1][(col / 2)].setSymbol(Owner.PLAYER_1);
-		matrix[(row / 2)][(col / 2)].setSymbol(Owner.PLAYER_2);
-		matrix[(row / 2)][(col / 2) - 1].setSymbol(Owner.PLAYER_1);
+		matrix[(row / 2) - 1][(col / 2) - 1].setSymbol(Owner.PLAYER_2, player2Color);
+		matrix[(row / 2) - 1][(col / 2)].setSymbol(Owner.PLAYER_1, player1Color);
+		matrix[(row / 2)][(col / 2)].setSymbol(Owner.PLAYER_2, player2Color);
+		matrix[(row / 2)][(col / 2) - 1].setSymbol(Owner.PLAYER_1, player1Color);
 
 	}
 
@@ -78,8 +84,8 @@ public class Board {
 		return ((row > p.getX() && p.getX() >= 0) && (col > p.getY() && p.getY() >= 0));
 	}
 
-	public void markCell(Point p, Owner symbol) {
-		matrix[p.getX()][p.getY()].setSymbol(symbol);
+	public void markCell(Point p, Owner symbol, String color) {
+		matrix[p.getX()][p.getY()].setSymbol(symbol, color);
 	}
 
 	public int getRow() {

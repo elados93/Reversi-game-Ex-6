@@ -2,6 +2,6 @@ package ReversiCode;
 
 public interface Player {
 	
-	public char getSymbol();
+	public String getSymbol();
 	public Point getMove(GameState gameState);
 }

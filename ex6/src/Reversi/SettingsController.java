@@ -150,4 +150,23 @@ public class SettingsController implements Initializable {
 		this.Player2Color.setValue(Color.CYAN);
 	}
 
+	public String getPlayer1Color() {
+		return Player1Color.getValue().toString();
+	}
+	
+
+	public String getPlayer2Color() {
+		return Player2Color.getValue().toString();
+	}
+	
+
+	public int getRowBox() {
+		return rowBox.getValue();
+	}
+	
+
+	public int getColBox() {
+		return colBox.getValue();
+	}
+
 }

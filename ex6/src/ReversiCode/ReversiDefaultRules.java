@@ -4,10 +4,19 @@ import java.util.Vector;
 
 import GeneralDef.Owner;
 import GeneralDef.Possible_OutCome;
+import Reversi.SettingsController;
 
 public class ReversiDefaultRules implements GameRules {
 
-	public ReversiDefaultRules(){};
+	private String p1Color;
+	private String p2Color;
+	
+	public ReversiDefaultRules(){
+		SettingsController settingsController = new SettingsController();
+		settingsController.parseSettingsFile();
+		this.p1Color = settingsController.getPlayer1Color();
+		this.p2Color = settingsController.getPlayer2Color();
+	};
 	
 	@Override
 	public void makePossibleMoves(GameState gameState, Owner symbol) {
@@ -63,7 +72,14 @@ public class ReversiDefaultRules implements GameRules {
 
 	        // Mark the cell in the right direction until you first meet the player symbol.
 	        do {
-	            (gameState.getBoard()).markCell(currentPoint, symbol);
+	        	String color = null;
+	        	if (symbol == Owner.PLAYER_1)
+	    			color = p1Color;
+	    		else
+	    			if (symbol == Owner.PLAYER_2)
+	    				color = p2Color;
+	    		
+	            (gameState.getBoard()).markCell(currentPoint, symbol, color);
 	            currentPoint.setX(currentPoint.getX() + dRow);
 	            currentPoint.setY(currentPoint.getY() + dCol);
 	            if ((gameState.getBoard()).isInBoard(currentPoint)) {
