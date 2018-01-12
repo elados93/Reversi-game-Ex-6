@@ -8,14 +8,19 @@
 
 <HBox fx:id="root" prefHeight="306.0" prefWidth="298.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 	<children>
-		<VBox>
+		<VBox prefHeight="306.0" prefWidth="124.0">
 			<children>
 				<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Current Player:" />
-				<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1 score:" />
-				<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2 score:" />
+				<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1:" />
+				<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2:" />
+            <Text fx:id="errorText" fill="RED" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text=" ">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Text>
 			</children>
 		</VBox>
-      <VBox prefHeight="200.0" prefWidth="100.0">
+      <VBox prefHeight="306.0" prefWidth="225.0">
          <children>
             <Text fx:id="currentPlayerField" strokeType="OUTSIDE" strokeWidth="0.0" text="currentPlayer" />
             <Text fx:id="player1Score" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1 score" />
@@ -24,6 +29,9 @@
          <padding>
             <Insets left="5.0" />
          </padding>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
       </VBox>
 	</children>
 </HBox>

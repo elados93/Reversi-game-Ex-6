@@ -10,15 +10,15 @@ import javafx.scene.paint.Color;
 
 public class ParseSettingsFile {
 
-	private static final int LINES = 4;
+	private static final int LINES = 5;
 
 	private String Player1Color;
 	private String Player2Color;
 	private Integer rowBox;
 	private Integer colBox;
+	private String firstPlayer;
 
-	public ParseSettingsFile() {
-	}
+	public ParseSettingsFile() {}
 
 	public void parseSettingsFile() {
 		try {
@@ -26,7 +26,7 @@ public class ParseSettingsFile {
 			if (!file.exists()) {
 				file.createNewFile();
 				writeDefaultValues();
-				writeSettings(rowBox, colBox, Player1Color, Player2Color);
+				writeSettings(rowBox, colBox, Player1Color, Player2Color, firstPlayer);
 				return;
 			}
 
@@ -47,6 +47,9 @@ public class ParseSettingsFile {
 				if (i == 3) 
 					this.Player2Color = line;
 				
+				if (i == 4)
+					this.firstPlayer = line;
+				
 			}
 
 			fileReader.close();
@@ -58,7 +61,7 @@ public class ParseSettingsFile {
 		}
 	}
 	
-	public void writeSettings(Integer row, Integer col, String p1, String p2) {
+	public void writeSettings(Integer row, Integer col, String p1, String p2, String firstPlayer) {
 
 		try {
 			File file = new File("settings.txt");
@@ -78,6 +81,9 @@ public class ParseSettingsFile {
 			bufferedWriter.newLine();
 
 			bufferedWriter.write(p2);
+			bufferedWriter.newLine();
+
+			bufferedWriter.write(firstPlayer);
 
 			bufferedWriter.close();
 		} catch (Exception e) {
@@ -90,8 +96,12 @@ public class ParseSettingsFile {
 		this.colBox = 8;
 		this.Player1Color = Color.BLACK.toString();
 		this.Player2Color = Color.WHITE.toString();
+		this.firstPlayer = "Player 1";
 	}
 
+	public String getFirstPlayer() {
+		return firstPlayer;
+	}
 	
 	public String getPlayer1Color() {
 		return Player1Color;

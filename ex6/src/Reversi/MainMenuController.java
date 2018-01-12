@@ -6,7 +6,6 @@ import GeneralDef.Owner;
 import ReversiCode.Board;
 
 import ReversiCode.GameState;
-import ReversiCode.GuiManager;
 import ReversiCode.GuiPlayer;
 import ReversiCode.ReversiDefaultRules;
 import javafx.fxml.FXML;
@@ -36,6 +35,7 @@ public class MainMenuController {
 			int col = parser.getColBox();
 			String player1Color = parser.getPlayer1Color();
 			String player2Color = parser.getPlayer2Color();
+			String firstPlayer = parser.getFirstPlayer();
 
 			Board board = new Board(row, col);
 
@@ -47,14 +47,15 @@ public class MainMenuController {
 			ReversiDefaultRules rules = new ReversiDefaultRules();
 
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Reversi/GameScene.fxml"));
-			ReversiBoardController reversiBoardController = new ReversiBoardController(board, p1, p2, rules, p1,
+			GuiPlayer firstP = firstPlayer.compareTo("Player 1") == 0 ? p1 : p2;
+			ReversiBoardController reversiBoardController = new ReversiBoardController(board, p1, p2, rules, firstP,
 					gameState);
-			
+
 			loader.setController(reversiBoardController);
 
 			HBox root = (HBox) loader.load();
 
-			Scene reversiGameScene = new Scene(root, 750, 550);
+			Scene reversiGameScene = new Scene(root, 700, 500);
 
 			stage.setScene(reversiGameScene);
 			stage.show();

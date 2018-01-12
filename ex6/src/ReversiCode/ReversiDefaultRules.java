@@ -155,7 +155,7 @@ public class ReversiDefaultRules implements GameRules {
 	            break;
 	        }
 	    }
-
+	    
 	    // Check if the cell isn't active.
 	    if (!currentCell.isCellActive()) {
 

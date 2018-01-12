@@ -17,6 +17,23 @@
 				<Insets />
 			</VBox.margin>
 		</Text>
+      <HBox prefHeight="37.0" prefWidth="600.0">
+         <children>
+            <Text fx:id="firstPlayerText" strokeType="OUTSIDE" strokeWidth="0.0" text="First Player:">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Text>
+            <ChoiceBox fx:id="firstPlayerPick" prefHeight="25.0" prefWidth="140.0">
+               <opaqueInsets>
+                  <Insets left="10.0" />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets left="50.0" top="5.0" />
+               </HBox.margin>
+            </ChoiceBox>
+         </children>
+      </HBox>
 		<HBox prefHeight="19.0" prefWidth="600.0" spacing="10.0">
 			<children>
 				<Label prefHeight="33.0" prefWidth="203.0" text="Player 1 color:">
@@ -50,8 +67,14 @@
 						<Font size="27.0" />
 					</font>
 				</Label>
-            <ChoiceBox fx:id="rowBox" prefHeight="25.0" prefWidth="119.0" />
-            <ChoiceBox fx:id="colBox" prefHeight="25.0" prefWidth="127.0" />
+            <ChoiceBox fx:id="rowBox" prefHeight="25.0" prefWidth="119.0">
+               <HBox.margin>
+                  <Insets left="23.0" top="15.0" />
+               </HBox.margin></ChoiceBox>
+            <ChoiceBox fx:id="colBox" prefHeight="25.0" prefWidth="127.0">
+               <HBox.margin>
+                  <Insets left="23.0" top="15.0" />
+               </HBox.margin></ChoiceBox>
 			</children>
 		</HBox>
 		<Button fx:id="mainMenuButton" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#mainMenu" text="Back To Main Menu" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />

@@ -49,9 +49,4 @@ public class Cell {
 		this.isPossibleOption = isPossibleOption;
 	}
 	
-	
-	
-
-	
-
 }
