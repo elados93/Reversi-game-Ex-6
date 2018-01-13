@@ -24,7 +24,7 @@ public class MainMenuController {
 	private Button Settings;
 	@FXML
 	private Button Exit;
-
+	
 	@FXML
 	protected void startGame() {
 		try {
@@ -55,7 +55,7 @@ public class MainMenuController {
 
 			HBox root = (HBox) loader.load();
 
-			Scene reversiGameScene = new Scene(root, 700, 500);
+			Scene reversiGameScene = new Scene(root, 650, 600);
 
 			stage.setScene(reversiGameScene);
 			stage.show();
@@ -88,5 +88,6 @@ public class MainMenuController {
 		Stage stage = (Stage) Exit.getScene().getWindow();
 		stage.close();
 	}
+
 
 }

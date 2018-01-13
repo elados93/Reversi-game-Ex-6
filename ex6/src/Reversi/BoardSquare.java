@@ -20,13 +20,15 @@ public class BoardSquare extends BorderPane {
 	private int row;
 	private int col;
 	private Cell cell;
+	private ClickListener clickListener;
 
-	public BoardSquare(GridPane gridPane, Cell cell, int row, int col) {
+	public BoardSquare(GridPane gridPane, Cell cell, int row, int col, ClickListener clickListener) {
 		super();
 		this.grid = gridPane;
 		this.cell = cell;
 		this.row = row;
 		this.col = col;
+		this.clickListener = clickListener;
 	}
 
 	public void draw(double cellWidth, double cellHeight) {
@@ -36,24 +38,39 @@ public class BoardSquare extends BorderPane {
 		this.setCenter(rec);
 		grid.add(this, col, row);
 
+		double radius;
+		if (cellHeight < cellWidth)
+			radius = cellHeight / 2.0 - 5.0;
+		else
+			radius = cellWidth / 2.0 - 5.0;
+
 		if (cell.getSymbol() != Owner.NONE) {
 			BorderPane pane = new BorderPane();
-			Circle circle = new Circle(cellWidth / 2.0, cellHeight / 2.0, (cellHeight + cellWidth) / 4.0 - 5.0,
-					Color.web(cell.getColor()));
+			Circle circle = new Circle(cellWidth / 2.0, cellHeight / 2.0, radius, Color.web(cell.getColor()));
 			pane.setCenter(circle);
 			grid.add(pane, col, row);
+			pane.setOnMouseClicked(e-> {
+				clickListener.ClickEvent(this);
+			});
 		} else {
 			if (cell.isPossibleOption()) {
 				BorderPane pane = new BorderPane();
 				Circle circleOptional = new Circle();
 				circleOptional.setFill(Color.TRANSPARENT);
-				circleOptional.setRadius((cellHeight + cellWidth) / 4.0 - 5.0);
+				circleOptional.setRadius(radius);
 				circleOptional.setStroke(Color.WHITE);
 				pane.setCenter(circleOptional);
 				grid.add(pane, col, row);
+				pane.setOnMouseClicked(e-> {
+					clickListener.ClickEvent(this);
+				});
 			}
 		}
 		cell.setPossibleOption(false);
+		
+		this.setOnMouseClicked(e-> {
+			clickListener.ClickEvent(this);
+		});
 	}
 
 	public int getRow() {

@@ -17,11 +17,13 @@ public class ReversiBoard extends GridPane {
 
 	private Board board;
 	private BoardSquare[][] boardSquars;
+	private ClickListener clickListener;
 
-	public ReversiBoard(Board board) {
+	public ReversiBoard(Board board, ClickListener clickListener) {
 		this.board = board;
 		this.boardSquars = new BoardSquare[board.getRow()][board.getCol()];
-
+		this.clickListener = clickListener;
+		
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Reversi/ReversiBoard.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
@@ -51,7 +53,7 @@ public class ReversiBoard extends GridPane {
 
 				Cell cell = board.getCell(new Point(i, j));
 
-				boardSquars[i][j] = new BoardSquare(this, cell, i, j);
+				boardSquars[i][j] = new BoardSquare(this, cell, i, j, clickListener);
 				boardSquars[i][j].draw(cellWidth, cellHeight);
 			}
 		}

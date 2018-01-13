@@ -45,7 +45,7 @@ public class SettingsController implements Initializable {
 
 			GridPane root = (GridPane) FXMLLoader.load(getClass().getResource("MainMenuFXML.fxml"));
 
-			Scene scene = new Scene(root, 400, 350);
+			Scene scene = new Scene(root, 650, 600);
 
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setTitle("Reversi");

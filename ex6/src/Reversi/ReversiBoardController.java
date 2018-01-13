@@ -2,6 +2,7 @@ package Reversi;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Vector;
 
@@ -20,6 +21,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
@@ -37,6 +39,7 @@ public class ReversiBoardController implements Initializable {
 	private boolean firstRun; // Boolean switch if it's the first turn.
 	private Point lastMove; // Pointer to the last player move, null if there
 							// isn't one.
+	private ReversiBoard reversiBoard;
 
 	@FXML
 	private HBox root;
@@ -68,7 +71,9 @@ public class ReversiBoardController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		ReversiBoard reversiBoard = new ReversiBoard(board);
+		ClickListener clickListener = new ClickListener(this);
+		reversiBoard = new ReversiBoard(board, clickListener);
+		
 		reversiBoard.setPrefWidth(400);
 		reversiBoard.setPrefHeight(400);
 		root.getChildren().add(0, reversiBoard);
@@ -81,7 +86,7 @@ public class ReversiBoardController implements Initializable {
 		gameRules.makePossibleMoves(gameState, currentPlayer == player1 ? Owner.PLAYER_1 : Owner.PLAYER_2);
 		markAllOptionalCells(
 				gameRules.getPossibleMoves(gameState, currentPlayer == player1 ? Owner.PLAYER_1 : Owner.PLAYER_2));
-		
+
 		reversiBoard.draw();
 
 		root.widthProperty().addListener((observable, oldValue, newValue) -> {
@@ -89,7 +94,7 @@ public class ReversiBoardController implements Initializable {
 					gameRules.getPossibleMoves(gameState, currentPlayer == player1 ? Owner.PLAYER_1 : Owner.PLAYER_2));
 			double boardNewWidth = newValue.doubleValue() - 150.0;
 			reversiBoard.setPrefWidth(boardNewWidth);
-			reversiBoard.draw();
+			reversiBoard.draw();	
 		});
 
 		root.heightProperty().addListener((observable, oldValue, newValue) -> {
@@ -98,23 +103,19 @@ public class ReversiBoardController implements Initializable {
 			reversiBoard.setPrefHeight(newValue.doubleValue());
 			reversiBoard.draw();
 		});
-		
-		reversiBoard.setOnMouseClicked(e -> {
-
-			int y = (int) (e.getX() / reversiBoard.getCellWidth());
-			int x = (int) (e.getY() / reversiBoard.getCellHeight());
-
-			lastMove = new Point(x, y);
-
-			playOneTurn();
-			currentPlayerField.setText(currentPlayer == player1 ? "1" : "2");
-			player1Score.setText(String.valueOf(board.getScore1()));
-			player2Score.setText(String.valueOf(board.getScore2()));
-			reversiBoard.draw();
-		});
 
 	}
 
+	public void doOneClick(int x, int y) {
+		lastMove = new Point(x, y);
+
+		playOneTurn();
+		currentPlayerField.setText(currentPlayer == player1 ? "1" : "2");
+		player1Score.setText(String.valueOf(board.getScore1()));
+		player2Score.setText(String.valueOf(board.getScore2()));
+		reversiBoard.draw();
+	}
+	
 	public void playOneTurn() {
 
 		Possible_OutCome result = null;
@@ -182,6 +183,7 @@ public class ReversiBoardController implements Initializable {
 			alert.setTitle("Game Ended");
 			alert.setHeaderText(winner);
 			alert.show();
+
 			Stage primaryStage = (Stage) player1Score.getScene().getWindow();
 
 			GridPane root = null;
@@ -191,13 +193,14 @@ public class ReversiBoardController implements Initializable {
 				e.printStackTrace();
 			}
 
-			Scene scene = new Scene(root, 400, 350);
+			Scene scene = new Scene(root, 650, 600);
 
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setTitle("Reversi");
 			primaryStage.setScene(scene);
 
 			primaryStage.show();
+
 		}
 	}
 

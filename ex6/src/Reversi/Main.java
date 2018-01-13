@@ -13,7 +13,7 @@ public class Main extends Application {
 		try {
 			GridPane root = (GridPane)FXMLLoader.load(getClass().getResource("MainMenuFXML.fxml"));			
 			
-			Scene mainMenuScene = new Scene(root, 400, 350);
+			Scene mainMenuScene = new Scene(root, 650, 600);
 
 			mainMenuScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setTitle("Reversi");
