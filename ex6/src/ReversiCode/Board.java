@@ -50,6 +50,10 @@ public class Board {
 		}
 	}
 
+	/**
+     * Initialize the board with empty cells and puts 2 cells of player 1
+     * and 2 cells of player 2 in the middle.
+     */
 	public void initBoard() {
 
 		ParseSettingsFile parser = new ParseSettingsFile();

@@ -57,6 +57,13 @@ public class GameManager {
 		return Owner.NONE;
 	}
 
+	
+	/**
+     * Return the current status of the game. The game will end if the board
+     * is full or the players has no more moves to play. The status may be
+     * WIN, DRAW or RUNNING.
+     * @return The current status of the game.
+     */
 	public Status checkStatus() {
 		gameRules.makePossibleMoves(gameState, Owner.PLAYER_1);
 		gameRules.makePossibleMoves(gameState, Owner.PLAYER_2);
@@ -109,6 +116,10 @@ public class GameManager {
 
 	}
 	
+	/**
+     * Play one turn of the game, starts with input from the current player.
+     * Check the inputs validation and act accordingly.
+     */
 	public void playOneTurn() {
 
 	    if (isAIPlayer && currentPlayer == player1) // Print the board for player1 v.s the AIPlayer.
@@ -195,6 +206,12 @@ public class GameManager {
 	    }
 	}
 	
+	
+	/**
+     * The function keep on getting input from the user until it's valid.
+     * The function prints messages with respect to the input.
+     * @param result The result of the last input.
+     */
 	private void inputUntilValid(Possible_OutCome result) {
 	    Owner currentP;
 

@@ -5,9 +5,14 @@ import java.util.Vector;
 public class GameState {
 	
 	private Board board;
-	Vector <Point> vec1;
-	Vector <Point> vec2;
+	Vector <Point> vec1; // Vector with all the possible points of player 1.
+	Vector <Point> vec2;// Vector with all the possible points of player 2.
 	
+	
+	/**
+     * constructor.
+     * @param board1
+     */
 	public GameState(Board board) {
 		this.board = board;
 		this.vec1 = new Vector<>();
@@ -18,6 +23,10 @@ public class GameState {
 		return board;
 	}
 
+	/**
+     * copy constructor.
+     * @param gameState
+     */
 	public GameState(GameState gameState) {
 	    //creates a new board like the board of the game state we get.
 	    board = new Board(gameState.board);

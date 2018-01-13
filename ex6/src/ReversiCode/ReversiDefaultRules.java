@@ -18,7 +18,13 @@ public class ReversiDefaultRules implements GameRules {
 		this.p1Color = parser.getPlayer1Color();
 		this.p2Color = parser.getPlayer2Color();
 	};
-	
+
+	/**
+     * make a vector with all the possible moves of symbol.
+     * @param symbol The current player.
+     * @return The possible moves vector.
+     */
+    
 	@Override
 	public void makePossibleMoves(GameState gameState, Owner symbol) {
 		// Free all the previous allocations of the possible points.
@@ -38,11 +44,22 @@ public class ReversiDefaultRules implements GameRules {
 
 	}
 
+	/**
+	 * Returns the possible moves of "symbol"
+	 * @param symbol The player.
+	 * @return Possible moves of symbol.
+	 */
 	@Override
 	public Vector<Point> getPossibleMoves(GameState gameState, Owner symbol) {
 		return symbol == Owner.PLAYER_1 ? (gameState.vec1) : (gameState.vec2);
 	}
 
+	/**
+     * Make a single move of "symbol" at point p.
+     * @param p Given point to mark.
+     * @param symbol The player who plays.
+     * @return Possible outcome of the procedure.
+     */
 	@Override
 	public Possible_OutCome makeMove(GameState gameState, Point p, Owner symbol) {
 		// Not in the board.
@@ -94,6 +111,11 @@ public class ReversiDefaultRules implements GameRules {
 	    return Possible_OutCome.SUCCESS;
 	}
 	
+	/**
+     * Free all the points in the vector of "symbol" player.
+     * @param symbol The player to delete his vector.
+     */
+    
 	public void freePointsInVec(GameState gameState, Owner symbol) {
 
 		if (symbol == Owner.PLAYER_1) {
@@ -107,6 +129,12 @@ public class ReversiDefaultRules implements GameRules {
 
 	}
 
+	/**
+     * Check all the surrounding cell of Point p of the player symbol.
+     * @param p Point to check his surrounding.
+     * @param symbol The current player.
+     */
+    
 	public void checkSurround(GameState gameState, Point p, Owner symbol){
 		int r = p.getX();
 	    int c = p.getY();
@@ -139,6 +167,14 @@ public class ReversiDefaultRules implements GameRules {
 	    }
 	}
 	
+	/**
+     * Move along the dRow & dCol direction and look for possible moves.
+     * @param p The point to begin with.
+     * @param symbol The current player.
+     * @param dRow The difference in row.
+     * @param dCol The difference in col.
+     */
+    
 	void moveAlong(GameState gameState, Point p ,Owner symbol, int dRow, int dCol) {
 	    Cell currentCell = (gameState.getBoard()).getCell(p);
 	    Owner currentSymbol = (symbol == Owner.PLAYER_1 ? Owner.PLAYER_2 : Owner.PLAYER_1);
@@ -182,10 +218,22 @@ public class ReversiDefaultRules implements GameRules {
 	    }
 	}
 
+	/**
+     * Returns true if the point is in the board.
+     * @param p Point to check.
+     * @return True if the point it's in the board.
+     */
+    
 	boolean isLegal(GameState gameState, Point p){
 		return (gameState.getBoard()).isInBoard(p);
 	}
 	
+	/**
+     * Get the specific point "point" in vector "vec".
+     * @param point Point to extract from vec.
+     * @param vec Given vector of Point objects.
+     * @return The point in the vector.
+     */
 	Point getPointFromVec(Point point, Vector<Point> vec){
 		for (int i = 0; i < vec.size(); ++i) {
 	        if (vec.elementAt(i).isEqual(point)) {
@@ -195,6 +243,13 @@ public class ReversiDefaultRules implements GameRules {
 	    return null; // If the point isn't in the vector return null.
 	}
 	
+	/**
+     * checks if a specific point is in the vector of the player with symbol that we get as a parameter.
+     * @param gameState
+     * @param p is the point to check.
+     * @param symbol is the symbol of the current player.
+     * @return true if the point is in the vector.
+     */
 	boolean isAlreadyContains(GameState gameState, Point p, Owner symbol){
 	    if (symbol == Owner.PLAYER_1) {
 	        for (int i = 0; i < gameState.vec1.size(); i++) {

@@ -31,8 +31,12 @@ public class BoardSquare extends BorderPane {
 		this.clickListener = clickListener;
 	}
 
+	/**
+	 * draws the cell whether it is a plane cell or if it is occiupied.
+	 * @param cellWidth is the cell width
+	 * @param cellHeight is the cell height
+	 */
 	public void draw(double cellWidth, double cellHeight) {
-
 		Rectangle rec = new Rectangle(cellWidth, cellHeight, Color.DARKGRAY);
 		rec.setStroke(Color.BLACK);
 		this.setCenter(rec);
@@ -44,15 +48,17 @@ public class BoardSquare extends BorderPane {
 		else
 			radius = cellWidth / 2.0 - 5.0;
 
+		// draw the circle according the player owning the cell
 		if (cell.getSymbol() != Owner.NONE) {
 			BorderPane pane = new BorderPane();
 			Circle circle = new Circle(cellWidth / 2.0, cellHeight / 2.0, radius, Color.web(cell.getColor()));
 			pane.setCenter(circle);
 			grid.add(pane, col, row);
-			pane.setOnMouseClicked(e-> {
+			pane.setOnMouseClicked(e -> {
 				clickListener.ClickEvent(this);
 			});
 		} else {
+			// the cell is a possible option that drawing a hole circle
 			if (cell.isPossibleOption()) {
 				BorderPane pane = new BorderPane();
 				Circle circleOptional = new Circle();
@@ -61,14 +67,16 @@ public class BoardSquare extends BorderPane {
 				circleOptional.setStroke(Color.WHITE);
 				pane.setCenter(circleOptional);
 				grid.add(pane, col, row);
-				pane.setOnMouseClicked(e-> {
+				// letting know what was the option of the player
+				pane.setOnMouseClicked(e -> {
 					clickListener.ClickEvent(this);
 				});
 			}
 		}
 		cell.setPossibleOption(false);
-		
-		this.setOnMouseClicked(e-> {
+
+		// in case the specific board square experienced a click the listener listen 
+		this.setOnMouseClicked(e -> {
 			clickListener.ClickEvent(this);
 		});
 	}

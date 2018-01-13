@@ -33,7 +33,11 @@ public class SettingsController implements Initializable {
 
 	@FXML
 	private ChoiceBox<String> firstPlayerPick;
-	
+
+	/**
+	 * the function of the main menu of the settings controller. creates the
+	 * scene of the settings.
+	 */
 	@FXML
 	protected void mainMenu() {
 		try {
@@ -59,6 +63,11 @@ public class SettingsController implements Initializable {
 
 	}
 
+	/**
+	 * initialize function.
+	 * set the properties of the board so the user can choose between 4-20 size.
+	 * also sets the option of which player would start.
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -66,12 +75,15 @@ public class SettingsController implements Initializable {
 			rowBox.getItems().add(j);
 			colBox.getItems().add(j);
 		}
-		
+
 		firstPlayerPick.getItems().add("Player 1");
 		firstPlayerPick.getItems().add("Player 2");
 		parseSettingsFile();
 	}
 
+	/**
+	 * get the parameters values from the file.
+	 */
 	private void parseSettingsFile() {
 		ParseSettingsFile parser = new ParseSettingsFile();
 		parser.parseSettingsFile();

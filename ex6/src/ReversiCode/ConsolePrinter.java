@@ -43,6 +43,9 @@ public class ConsolePrinter implements Printer {
 
 	}
 
+	 /**
+     * Prints a line of commas for the board.
+     */
 	private void printCommas() {
 		int col = board.getCol();
 
@@ -54,6 +57,11 @@ public class ConsolePrinter implements Printer {
 		System.out.println();
 	}
 
+	 /**
+     * Prints one line by a given "currentRow" argument.
+     * With respect to the number of the number of he row.
+     * @param currentRow The row to be printed.
+     */
 	private void printLine(int currentRow) {
 		int col = board.getCol();
 
@@ -79,6 +87,12 @@ public class ConsolePrinter implements Printer {
 		printCommas();
 	}
 
+	/**
+     * Prints the all the possible moves of the given player which are given as arguments.
+     * The function also support empty vector as no possible moves message.
+     * @param p The current player.
+     * @param v The possible points of p.
+     */
 	@Override
 	public void printNextPlayerMove(Player p, Vector<Point> v) {
 
@@ -101,6 +115,11 @@ public class ConsolePrinter implements Printer {
 		}
 	}
 
+	 /**
+     * Gets the previous player and his last move ant prints it.
+     * @param player The previous player.
+     * @param point The last move of the player.
+     */
 	@Override
 	public void printLastMove(Player player, Point point) {
 
@@ -112,7 +131,13 @@ public class ConsolePrinter implements Printer {
 
 	}
 
-	@Override
+	 /**
+     * Gets the winner and a possible status, may be WIN or DRAW.
+     * Prints a message according to the arguments.
+     * @param p The player who won.
+     * @param status1 The status of the game, WIN or DRAW.
+     */
+   	@Override
 	public void printEndOfGame(Player p, Status status1) {
 		if (status1 == Status.WIN)
 			System.out.println("Won! congrats! Press any key to continue.");
@@ -136,6 +161,9 @@ public class ConsolePrinter implements Printer {
 
 	}
 
+	 /**
+	  * Print the start menu of the game.
+	  */
 	@Override
 	public void printMenu() {
 		System.out.println("Welcome to Reversi Game! :)");
@@ -146,6 +174,10 @@ public class ConsolePrinter implements Printer {
 		System.out.println("3. a remote player");
 	}
 
+	 /**
+     * Print information that game started.
+     * @param currentOwner gets the current owner in order to know the right message.
+     */
 	@Override
 	public void printInformingGameStarted(Owner currentOwner) {
 		if(currentOwner == Owner.PLAYER_1){
@@ -159,6 +191,10 @@ public class ConsolePrinter implements Printer {
 
 	}
 
+	 /**
+     * Print waiting for other player message.
+     * @param currentOwner gets the current owner in order to know the right message.
+     */
 	@Override
 	public void printWaitingForOtherPlayer(Owner currentOwner) {
 		if (currentOwner == Owner.PLAYER_1) {
@@ -171,20 +207,36 @@ public class ConsolePrinter implements Printer {
 
 	}
 
+	 /**
+     * Print the string to the console in a new line.
+     * @param s The wanted string.
+     */
 	@Override
 	public void printMessage(String s) {
 		System.out.println(s);
 	}
 
+	 /**
+     * Prints out of bound message.
+     * The function called from printError function.
+     */
 	public void printOutOfBound() {
 		System.out.println("Point out of bound! enter a valid point");
 	}
 
+	 /**
+     * Prints occupied cell message.
+     * The function called from printError function.
+     */
 	public void printOccupiedCell() {
 		System.out.println("Occupied cell! enter a valid point");
 
 	}
 
+    /**
+     * Prints illegal move message.
+     * The function called from printError function.
+     */
 	public void printIllegalMove() {
 		System.out.println("Illegal move! enter a valid point");
 	}
