@@ -1,5 +1,5 @@
-8
-8
+4
+4
 0x996699ff
 0xe6b3ccff
-Player 2
+Player 1

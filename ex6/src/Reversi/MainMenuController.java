@@ -86,6 +86,8 @@ public class MainMenuController {
 			VBox root = (VBox) loader.load();
 			loader.setController(new SettingsController());
 			Scene settingsScene = new Scene(root, 640, 500);
+			settingsScene.getStylesheets().add(getClass().getResource("applicationSettings.css").toExternalForm());
+
 
 			stage.setScene(settingsScene);
 			stage.show();
