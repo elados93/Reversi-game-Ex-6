@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Reversi.SettingsController">
+	<children>
+		<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Settings" textAlignment="CENTER" underline="true" wrappingWidth="600.3203125">
+			<font>
+				<Font size="52.0" />
+			</font>
+			<VBox.margin>
+				<Insets />
+			</VBox.margin>
+		</Text>
+      <HBox prefHeight="37.0" prefWidth="600.0">
+         <children>
+            <Text fx:id="firstPlayerText" strokeType="OUTSIDE" strokeWidth="0.0" text="First Player:">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Text>
+            <ChoiceBox fx:id="firstPlayerPick" prefHeight="25.0" prefWidth="140.0">
+               <opaqueInsets>
+                  <Insets left="10.0" />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets left="50.0" top="5.0" />
+               </HBox.margin>
+            </ChoiceBox>
+         </children>
+      </HBox>
+		<HBox prefHeight="19.0" prefWidth="600.0" spacing="10.0">
+			<children>
+				<Label prefHeight="33.0" prefWidth="203.0" text="Player 1 color:">
+					<font>
+						<Font size="27.0" />
+					</font>
+				</Label>
+				<ColorPicker fx:id="Player1Color" prefHeight="27.0" prefWidth="136.0" />
+			</children>
+			<padding>
+				<Insets top="10.0" />
+			</padding>
+		</HBox>
+		<HBox prefHeight="51.0" prefWidth="600.0" spacing="10.0">
+			<children>
+				<Label prefHeight="41.0" prefWidth="202.0" text="Player 2 color:">
+					<font>
+						<Font size="27.0" />
+					</font>
+				</Label>
+				<ColorPicker fx:id="Player2Color" prefHeight="27.0" prefWidth="137.0" />
+			</children>
+			<padding>
+				<Insets top="10.0" />
+			</padding>
+		</HBox>
+		<HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+			<children>
+				<Label prefHeight="52.0" prefWidth="179.0" text="Board Size:">
+					<font>
+						<Font size="27.0" />
+					</font>
+				</Label>
+            <ChoiceBox fx:id="rowBox" prefHeight="25.0" prefWidth="119.0">
+               <HBox.margin>
+                  <Insets left="23.0" top="15.0" />
+               </HBox.margin></ChoiceBox>
+            <ChoiceBox fx:id="colBox" prefHeight="25.0" prefWidth="127.0">
+               <HBox.margin>
+                  <Insets left="23.0" top="15.0" />
+               </HBox.margin></ChoiceBox>
+			</children>
+		</HBox>
+		<Button fx:id="mainMenuButton" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#mainMenu" text="Back To Main Menu" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
+	</children>
+</VBox>

@@ -1,0 +1,90 @@
+commit d313b047cc69f7575e0e449c0dd3755438f877dc
+Author: shaharpalmor <shaharpalmor@gmail.com>
+Date:   Sun Jan 14 00:45:02 2018 +0200
+
+    adding comments
+
+commit 627b64b65f35e6b45cc2f028e9eef7322c626297
+Author: shaharpalmor <shaharpalmor@gmail.com>
+Date:   Sat Jan 13 16:50:11 2018 +0200
+
+    fixed bugges, making the board resizeable
+
+commit 0600c069c1ca8bebd9390d5b5ebd752988d1d8fb
+Author: elados93 <elados1163@gmail.com>
+Date:   Sat Jan 13 16:34:01 2018 +0200
+
+    Fixed the mouse clicks to be more accurates.
+
+commit 964a1b6125f29d2f208faefe6085e6bc549259a7
+Author: elados93 <elados1163@gmail.com>
+Date:   Fri Jan 12 16:34:57 2018 +0200
+
+    Added the first Player option and fixed bugs.
+
+commit 6af0e9f95c92c8676d55749e1be20a261ea50f0a
+Author: shaharpalmor <shaharpalmor@gmail.com>
+Date:   Thu Jan 11 22:47:13 2018 +0200
+
+    Saved the day
+
+commit ed88911a32e1ed99301c631bb4f99ce36461d786
+Author: elados93 <elados1163@gmail.com>
+Date:   Thu Jan 11 14:41:31 2018 +0200
+
+    making the setting scene including the options of choosing colors and the size of the board.
+	also making the option of chosing which player will start.
+
+commit 835de5e662bbe59ef26bfdb16d3d8318b9bf0628
+Author: elados93 <elados1163@gmail.com>
+Date:   Thu Jan 11 12:10:10 2018 +0200
+
+    dealing with the game scene, making the board visable
+
+commit 114b8830fa3c345f13d6481c6d5401153372150b
+Author: elados93 <elados1163@gmail.com>
+Date:   Wed Jan 10 01:24:39 2018 +0200
+
+    added a lot of stuff
+
+commit 7cf5af51c2e807e43bab4b23d2c55cc05e81528f
+Author: elados93 <elados1163@gmail.com>
+Date:   Mon Jan 8 21:51:04 2018 +0200
+
+    more bugs! :(
+
+commit 017e38574ce25736abf1a7593a8adb29af653ad9
+Author: elados93 <elados1163@gmail.com>
+Date:   Mon Jan 8 19:37:17 2018 +0200
+
+    bugs!
+
+commit 94f872220472d059f889f560006e78a59ada8868
+Author: shaharpalmor <shaharpalmor@gmail.com>
+Date:   Sat Jan 6 23:48:23 2018 +0200
+
+    Test
+
+commit f855bfb870b706bc38e83045fcccb408bba01631
+Author: elados93 <elados1163@gmail.com>
+Date:   Fri Jan 5 17:31:35 2018 +0200
+
+    a
+
+commit f433f2999bcdb3b3feb7e2672d15364062258794
+Author: shaharpalmor <shaharpalmor@gmail.com>
+Date:   Fri Jan 5 17:29:40 2018 +0200
+
+    adding a gui player
+
+commit 094e1caed89a535901039ade91d5afa78ab9f0a6
+Author: elados93 <elados1163@gmail.com>
+Date:   Fri Jan 5 17:21:39 2018 +0200
+
+    creating a click listener class
+
+commit a674134c14746d2640d0677673a936e63d38f38b
+Author: elados93 <elados1163@gmail.com>
+Date:   Fri Jan 5 15:44:54 2018 +0200
+
+    Started FXML project
