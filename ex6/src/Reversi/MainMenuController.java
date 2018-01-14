@@ -24,10 +24,15 @@ public class MainMenuController {
 	private Button Settings;
 	@FXML
 	private Button Exit;
-	
+
+	/**
+	 * this function is connected to the fxml and shows the scene of the game.
+	 */
 	@FXML
 	protected void startGame() {
 		try {
+			// getting the details of the board and players from the settings
+			// file.
 			ParseSettingsFile parser = new ParseSettingsFile();
 
 			parser.parseSettingsFile();
@@ -37,6 +42,8 @@ public class MainMenuController {
 			String player2Color = parser.getPlayer2Color();
 			String firstPlayer = parser.getFirstPlayer();
 
+			// creating the board of the game according to the values of the
+			// settings file.
 			Board board = new Board(row, col);
 
 			Stage stage = (Stage) Start_Game.getScene().getWindow();
@@ -65,6 +72,11 @@ public class MainMenuController {
 		}
 	}
 
+	/**
+	 * this function set the setting scene in which the user can choose the
+	 * players color and also which player will start. he also can choose the
+	 * size of the board.
+	 */
 	@FXML
 	protected void settings() {
 		try {
@@ -83,11 +95,13 @@ public class MainMenuController {
 		}
 	}
 
+	/**
+	 * this function set the exit scene.
+	 */
 	@FXML
 	protected void exitGame() {
 		Stage stage = (Stage) Exit.getScene().getWindow();
 		stage.close();
 	}
-
 
 }
