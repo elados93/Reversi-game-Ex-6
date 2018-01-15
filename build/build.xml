@@ -102,7 +102,7 @@
 			<fx:resources refid="appRes"/>
 	
 			<manifest>
-				<attribute name="Implementation-Vendor" value="Shahar Palmor and Elad Aharon"/>
+				<attribute name="Implementation-Vendor" value="Elad Aharon and Shahar Palmor "/>
 				<attribute name="Implementation-Title" value="Reversi"/>
 				<attribute name="Implementation-Version" value="1.0"/>
 				<attribute name="JavaFX-Feature-Proxy" value="None"/>

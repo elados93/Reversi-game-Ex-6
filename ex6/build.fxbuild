@@ -2,7 +2,7 @@
 <anttasks:AntTask xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:anttasks="http://org.eclipse.fx.ide.jdt/1.0" buildDirectory="${project}/build">
   <deploy>
     <application name="ex6" mainclass="Reversi.Main" version="1.0"/>
-    <info title="Reversi" vendor="Shahar Palmor and Elad Aharon"/>
+    <info title="Reversi" vendor="Elad Aharon and Shahar Palmor "/>
   </deploy>
   <signjar/>
 </anttasks:AntTask>

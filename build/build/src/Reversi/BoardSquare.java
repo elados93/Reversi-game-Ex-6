@@ -33,8 +33,11 @@ public class BoardSquare extends BorderPane {
 
 	/**
 	 * draws the cell whether it is a plane cell or if it is occiupied.
-	 * @param cellWidth is the cell width
-	 * @param cellHeight is the cell height
+	 * 
+	 * @param cellWidth
+	 *            is the cell width
+	 * @param cellHeight
+	 *            is the cell height
 	 */
 	public void draw(double cellWidth, double cellHeight) {
 		Rectangle rec = new Rectangle(cellWidth, cellHeight, Color.DARKGRAY);
@@ -75,7 +78,8 @@ public class BoardSquare extends BorderPane {
 		}
 		cell.setPossibleOption(false);
 
-		// in case the specific board square experienced a click the listener listen 
+		// in case the specific board square experienced a click the listener
+		// listen
 		this.setOnMouseClicked(e -> {
 			clickListener.ClickEvent(this);
 		});

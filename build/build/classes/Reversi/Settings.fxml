@@ -9,7 +9,7 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Reversi.SettingsController">
 	<children>
-		<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Settings" textAlignment="CENTER" underline="true" wrappingWidth="600.3203125">
+		<Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Settings" textAlignment="CENTER" underline="true" wrappingWidth="600.3203125">
 			<font>
 				<Font size="52.0" />
 			</font>
@@ -19,7 +19,7 @@
 		</Text>
       <HBox prefHeight="37.0" prefWidth="600.0">
          <children>
-            <Text fx:id="firstPlayerText" strokeType="OUTSIDE" strokeWidth="0.0" text="First Player:">
+            <Text fx:id="firstPlayerText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="First Player:">
                <font>
                   <Font size="27.0" />
                </font>
@@ -36,7 +36,7 @@
       </HBox>
 		<HBox prefHeight="19.0" prefWidth="600.0" spacing="10.0">
 			<children>
-				<Label prefHeight="33.0" prefWidth="203.0" text="Player 1 color:">
+				<Label prefHeight="33.0" prefWidth="203.0" text="Player 1 color:" textFill="WHITE">
 					<font>
 						<Font size="27.0" />
 					</font>
@@ -49,7 +49,7 @@
 		</HBox>
 		<HBox prefHeight="51.0" prefWidth="600.0" spacing="10.0">
 			<children>
-				<Label prefHeight="41.0" prefWidth="202.0" text="Player 2 color:">
+				<Label prefHeight="41.0" prefWidth="202.0" text="Player 2 color:" textFill="WHITE">
 					<font>
 						<Font size="27.0" />
 					</font>
@@ -62,7 +62,7 @@
 		</HBox>
 		<HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
 			<children>
-				<Label prefHeight="52.0" prefWidth="179.0" text="Board Size:">
+				<Label prefHeight="52.0" prefWidth="179.0" text="Board Size:" textFill="WHITE">
 					<font>
 						<Font size="27.0" />
 					</font>
