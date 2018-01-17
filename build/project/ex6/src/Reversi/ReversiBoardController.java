@@ -56,7 +56,7 @@ public class ReversiBoardController implements Initializable {
 	@FXML
 	private Text errorText;
 
-	//constructor
+	// constructor
 	public ReversiBoardController(Board board, Player player1, Player player2, GameRules gameRules,
 			Player currentPlayer, GameState gameState) {
 		super();
@@ -71,9 +71,8 @@ public class ReversiBoardController implements Initializable {
 	}
 
 	/**
-	 * initialize function.
-	 * makes the screen resizable
-	 * sets the text on the side of the game
+	 * initialize function. makes the screen resizeable sets the text on the
+	 * side of the game
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -113,10 +112,13 @@ public class ReversiBoardController implements Initializable {
 	}
 
 	/**
-	 * check what was the last click of the current player in the game and
-	 * give the accurate details of the x and y values.
-	 * @param x is the x value
-	 * @param y is the y value.
+	 * check what was the last click of the current player in the game and give
+	 * the accurate details of the x and y values.
+	 * 
+	 * @param x
+	 *            is the x value
+	 * @param y
+	 *            is the y value.
 	 */
 	public void doOneClick(int x, int y) {
 		lastMove = new Point(x, y);
@@ -162,8 +164,14 @@ public class ReversiBoardController implements Initializable {
 
 				checkIfGameEnded(currentOwner, otherOwner);
 				markAllOptionalCells(gameRules.getPossibleMoves(gameState, otherOwner));
-				// check if the other owner has no moves
-				if (gameRules.getPossibleMoves(gameState, otherOwner).isEmpty()) {
+				// check if the other owner has no moves and the current player
+				// still has moves.
+				if (gameRules.getPossibleMoves(gameState, otherOwner).isEmpty()
+						&& !gameRules.getPossibleMoves(gameState, currentOwner).isEmpty()) {
+					Alert alert = new Alert(AlertType.INFORMATION, "no moves");
+					// alert.setTitle("Game Ended");
+					// alert.setHeaderText(winner);
+					alert.show();
 					gameRules.makePossibleMoves(gameState, currentOwner);
 					markAllOptionalCells(gameRules.getPossibleMoves(gameState, currentOwner));
 					return;
@@ -184,8 +192,11 @@ public class ReversiBoardController implements Initializable {
 
 	/**
 	 * this functions checks after each move of eeah player if the game ended.
-	 * @param currentOwner is the current player
-	 * @param otherOwner is the other player
+	 * 
+	 * @param currentOwner
+	 *            is the current player
+	 * @param otherOwner
+	 *            is the other player
 	 */
 	public void checkIfGameEnded(Owner currentOwner, Owner otherOwner) {
 		// checks if the are option moves for any player
@@ -231,9 +242,11 @@ public class ReversiBoardController implements Initializable {
 	}
 
 	/**
-	 * @param result is if the click that the user did was an optional move
-	 * or if the move was not one of the options
-	 * @param currentOwner is the current player
+	 * @param result
+	 *            is if the click that the user did was an optional move or if
+	 *            the move was not one of the options
+	 * @param currentOwner
+	 *            is the current player
 	 */
 	public void unValidPointHandler(Possible_OutCome result, Owner currentOwner) {
 		markAllOptionalCells(gameRules.getPossibleMoves(gameState, currentOwner));

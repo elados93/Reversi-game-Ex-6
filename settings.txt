@@ -1,5 +1,5 @@
 4
 4
-0x996699ff
-0xe6b3ccff
+0xe6994dff
+0xff9980ff
 Player 1

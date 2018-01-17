@@ -3,6 +3,7 @@ package Reversi;
 import GeneralDef.Owner;
 import ReversiCode.Cell;
 import javafx.geometry.Pos;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
@@ -55,6 +56,11 @@ public class BoardSquare extends BorderPane {
 		if (cell.getSymbol() != Owner.NONE) {
 			BorderPane pane = new BorderPane();
 			Circle circle = new Circle(cellWidth / 2.0, cellHeight / 2.0, radius, Color.web(cell.getColor()));
+			circle.setStrokeWidth(2);
+			DropShadow dropshadow = new DropShadow();
+			dropshadow.setOffsetX(-4);
+			dropshadow.setOffsetY(4);
+			circle.setEffect(dropshadow);
 			pane.setCenter(circle);
 			grid.add(pane, col, row);
 			pane.setOnMouseClicked(e -> {

@@ -4,7 +4,7 @@ import GeneralDef.Owner;
 
 public class GuiPlayer implements Player {
 
-	private String color; // TODO maybe to delete...#@
+	private String color;
 	private Owner owner;
 	
 	/**
@@ -28,13 +28,8 @@ public class GuiPlayer implements Player {
 
 	@Override
 	public Point getMove(GameState gameState) {
-/*		while (true) {
-			if (clickListener.isPressed())
-				break;
-		}
-		return clickListener.getLastClick();*/
+		// the gui player get move function is not relevant.
 		return null;
-		// TODO what with player man?!
 	}
 
 	/**
